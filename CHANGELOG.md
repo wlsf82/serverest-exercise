@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.29.2](https://github.com/ServeRest/ServeRest/compare/v2.29.1...v2.29.2) (2024-04-01)
+
+
+### Bug Fixes
+
+* **errorHandler:** retornar erro sobre limite de valor inteiro aceito ([#483](https://github.com/ServeRest/ServeRest/issues/483)) ([6576b52](https://github.com/ServeRest/ServeRest/commit/6576b52049f83d64079dc38d198bf018d1589de5)), closes [#471](https://github.com/ServeRest/ServeRest/issues/471)
+
+
+### Chores
+
+* codeql analysis implementation ([faee74d](https://github.com/ServeRest/ServeRest/commit/faee74ddd0dd0f136b7e9adeb2ee64a8a4359fcf))
+* **deps-dev:** bump @babel/traverse from 7.21.2 to 7.24.1 ([#460](https://github.com/ServeRest/ServeRest/issues/460)) ([a6c4502](https://github.com/ServeRest/ServeRest/commit/a6c45027911e0ab85ab2dfa4a25379769f6db346))
+* **deps-dev:** bump nodemon from 2.0.21 to 3.1.0 ([#468](https://github.com/ServeRest/ServeRest/issues/468)) ([a0f386b](https://github.com/ServeRest/ServeRest/commit/a0f386b272fb951da0232cbfa9a6cc70182cec22))
+* **deps-dev:** bump sinon from 10.0.0 to 17.0.1 ([#462](https://github.com/ServeRest/ServeRest/issues/462)) ([cbdbe71](https://github.com/ServeRest/ServeRest/commit/cbdbe7129551b071e6fcd05832b9260a4b2f715b)), closes [#458](https://github.com/ServeRest/ServeRest/issues/458)
+* **deps-dev:** bump supertest from 6.3.3 to 6.3.4 ([#464](https://github.com/ServeRest/ServeRest/issues/464)) ([c874799](https://github.com/ServeRest/ServeRest/commit/c8747992104b82af5f4b0657cbcbf118e5eb94d7))
+* **deps-dev:** bump the npm_and_yarn group group with 1 update ([#463](https://github.com/ServeRest/ServeRest/issues/463)) ([0cf5f47](https://github.com/ServeRest/ServeRest/commit/0cf5f4732e154177924a8dfc90b96c0a4f2af165)), closes [#458](https://github.com/ServeRest/ServeRest/issues/458)
+* **deps:** bump dacbd/create-issue-action from 1.2.0 to 2.0.0 ([#465](https://github.com/ServeRest/ServeRest/issues/465)) ([75c2e20](https://github.com/ServeRest/ServeRest/commit/75c2e204587d63e0b89374c5a6436c6e609c8827))
+* **deps:** bump google-github-actions/setup-gcloud from 1 to 2 ([#469](https://github.com/ServeRest/ServeRest/issues/469)) ([e4ee50b](https://github.com/ServeRest/ServeRest/commit/e4ee50bde83248de19e21146606252055bac45de))
+* **deps:** bump ip ([#459](https://github.com/ServeRest/ServeRest/issues/459)) ([be40e00](https://github.com/ServeRest/ServeRest/commit/be40e00b7dcce173550b994a434f8e4c53e25fc1))
+* **deps:** bump styfle/cancel-workflow-action from 0.11.0 to 0.12.1 ([#466](https://github.com/ServeRest/ServeRest/issues/466)) ([831343d](https://github.com/ServeRest/ServeRest/commit/831343d64fa2ec7918ef8c349b5a1502c6f73823))
+* **deps:** bump tj-actions/changed-files from 32 to 43 ([#467](https://github.com/ServeRest/ServeRest/issues/467)) ([d934931](https://github.com/ServeRest/ServeRest/commit/d9349315c095cfc917baa58a716560fe49d72982))
+
 ## [2.29.1](https://github.com/ServeRest/ServeRest/compare/v2.29.0...v2.29.1) (2024-03-19)
 
 
