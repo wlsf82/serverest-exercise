@@ -49,7 +49,7 @@ describe('Error handler', () => {
     })
   })
 
-  it('Deve informar para abrir issue ao ocorrer erro 500 com o tipo de erro ao ter "error.type" - @skipE2E', async () => {
+  it('Deve informar para abrir issue ao ocorrer erro 500 com o tipo de erro ao ter "error.type" e não for erro de schema - @skipE2E', async () => {
     const consoleLogStub = sandbox.stub(console, 'log')
     sandbox.stub(carrinhosService, 'getAll').throws({ type: 'test' })
 
@@ -87,5 +87,34 @@ describe('Error handler', () => {
       level: 'error',
       message: { message: 'Teste de erro 500', stack: '.src/stack' }
     }))
+  })
+
+  it('Deve informar para abrir issue ao retornar erro de schema que ainda não foi mapeado" - @skipE2E', async () => {
+    sandbox.stub(carrinhosService, 'getAll').throws({
+      name: 'ValidationError',
+      details: {
+        body: [{
+          context: {
+            label: 'preco'
+          },
+          type: 'something.test', // Tipo de erro não mapeado
+          message: 'some message'
+        },
+        {
+          context: {
+            label: 'descricao'
+          },
+          type: 'string.base', // Tipo de erro mapeado
+          message: 'other'
+        }]
+      }
+    })
+
+    const { body } = await request.get('/carrinhos').expect(400)
+
+    chai.assert.deepEqual(body, {
+      preco: 'some message - Erro something.test - Abra uma issue informando essa resposta. https://github.com/ServeRest/ServeRest/issues',
+      descricao: 'descricao deve ser uma string'
+    })
   })
 })
