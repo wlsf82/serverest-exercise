@@ -2,7 +2,6 @@
 # serverest 
 
 NAME_IMAGE=paulogoncalvesbh/serverest
-HOST_PORT=3000
 
 # COMANDOS PARA USAR A IMAGEM DE PRODUÇÃO \/
 
@@ -12,7 +11,7 @@ build:
 	@DOCKER_BUILDKIT=1 docker build --file Dockerfile --tag ${NAME_IMAGE} .
 
 run:
-	@docker run -p ${HOST_PORT}:3000 ${NAME_IMAGE}
+	@docker run -p 3000:3000 ${NAME_IMAGE}
 
 clean:
 	@docker rmi -f ${NAME_IMAGE}
@@ -24,6 +23,10 @@ stop:
 
 run-dev:
 	@docker-compose up --abort-on-container-exit --build run-dev
+
+run-debug:
+	docker build --file Dockerfile --tag serverest-debug .
+	docker run --entrypoint "npm" -p 3000:3000 -p 9229:9229 -v $(shell pwd):/app serverest-debug run start:debug
 
 test-contract:
 	@docker-compose up --abort-on-container-exit --build test-contract

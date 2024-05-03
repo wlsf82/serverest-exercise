@@ -37,6 +37,7 @@ Você pode contribuir de várias maneiras, sendo as mais conhecidas as seguintes
 
 ## Sumário
 - [Execução do projeto](#execução-do-projeto)
+    - [Debug](#debug)
 - [Etapas para contribuir](#etapas-para-contribuir)
 - [Garantindo a qualidade do projeto](#garantindo-a-qualidade-do-projeto)
     - [Legenda](#legenda)
@@ -72,6 +73,22 @@ Utilize o seguinte comando para executar o projeto enquanto desenvolve para util
 ```sh
 make run-dev
 ```
+
+### Debug
+
+Para realizar o debug da aplicação com _VS Code_ há 2 maneiras:
+
+1. **Debugando a aplicação em container Docker**: Utilize o comando `make run-debug` e na aba `Run and Debug` do VS Code selecione a opção `Docker: Attach to ServeRest container`.
+2. **Debugando a aplicação localmente com NPM**: Na aba `Run and Debug` do VS Code selecione a opção `Launch via NPM`.
+
+Escolha a forma de execução de acordo com o cenário que quer debugar.
+
+Utilize a primeira opção se o erro ocorre em:
+- Docker localmente.
+- _serverest.dev_.
+
+Utilize a segunda opção se o erro ocorre em:
+- NPM localmente.
 
 ## Etapas para contribuir
 

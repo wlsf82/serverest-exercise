@@ -32,6 +32,7 @@
     "prepare": "is-ci || husky install",
     "commit": "cz",
     "start": "node ./src/server.js",
+    "start:debug": "node --inspect=0.0.0.0 ./src/server.js",
     "dev": "nodemon --legacy-watch -e json,js ./src/server.js --nodoc",
     "test:mutation": "stryker run ./test/stryker.conf.js",
     "test:mutation:diff": "stryker-diff-runner --path ./test/stryker.conf.js --branch trunk",
