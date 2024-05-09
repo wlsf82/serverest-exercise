@@ -336,7 +336,7 @@ jobs:
       id: gcloud_revision
       run: |
         PENULTIMATE_REVISION=$(gcloud run revisions list --service $SERVICE_PRODUCTION --region $REGION --format="value(metadata.name)" --limit=2 | tail -n 1)
-        echo "::set-output name=penultimate::$PENULTIMATE_REVISION"
+        echo "penultimate=$PENULTIMATE_REVISION" >> $GITHUB_OUTPUT
     - name: Update production traffic to penultimate revision
       run: |
         gcloud run \
