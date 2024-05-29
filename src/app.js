@@ -23,6 +23,7 @@ const errorHandler = require('./middlewares/error-handler')
 const moesifMiddleware = require('./middlewares/moesif-monitor-middleware')
 const { version } = require('../package.json')
 const swaggerDocument = require('../docs/swagger.json')
+const rateLimiter = require('./middlewares/rate-limiter')
 const packageJson = require('../package.json')
 
 const app = express()
@@ -48,6 +49,7 @@ app.use(queryParser())
 app.use(timeout())
 app.use(cors())
 app.use(moesifMiddleware)
+app.use(rateLimiter)
 
 app.disable('etag')
 

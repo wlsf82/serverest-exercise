@@ -22,5 +22,6 @@ module.exports = {
   REPLENISHED_STOCK: 'Estoque dos produtos reabastecido',
   USER_NOT_FOUND: 'Usuário não encontrado',
   CART_NOT_FOUND: 'Carrinho não encontrado',
-  PRODUCT_NOT_FOUND: 'Produto não encontrado'
+  PRODUCT_NOT_FOUND: 'Produto não encontrado',
+  LOAD_TEST_DETECTED: 'Foi detectado comportamento equivalente a teste de carga, não execute teste de carga nesse ambiente. Leia a documentação: https://github.com/ServeRest/ServeRest#teste-de-carga'
 }
