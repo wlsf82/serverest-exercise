@@ -30,13 +30,16 @@ function errorHandler (error, _req, res, _next) {
   if (error instanceof IpDeniedError) {
     return res.status(429).json({ message: 'IP bloqueado por excesso de requisições. Alternativas: Envie mensagem para o autor do projeto para desbloqueio (https://linkedin.com/in/paulo-goncalves) ou faça doação financeira ao projeto (https://github.com/ServeRest/ServeRest?tab=readme-ov-file#doadores).' })
   }
-
-  log({ level: 'error', message: error?.type || error })
+  log({
+    level: 'error',
+    message: `Error: ${error?.type || JSON.stringify(error)}, Stack: ${error.stack || 'No stack available'}, Request body: ${JSON.stringify(_req.body)}`
+  })
 
   if (error?.type) {
     return res.status(500).json({ message: INTERNAL_ERROR, error: error.type, version })
   }
-  return res.status(500).json({ message: INTERNAL_ERROR, version, error: { message: error.message, stack: error.stack } })
+  /* istanbul ignore next */
+  return res.status(500).json({ message: INTERNAL_ERROR, version, error: { message: error.message || 'No message available', stack: error.stack || 'No stack available' } })
 }
 
 module.exports = errorHandler

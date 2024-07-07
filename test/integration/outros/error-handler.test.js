@@ -65,7 +65,7 @@ describe('Error handler', () => {
     sinon.assert.calledWith(consoleLogStub, sinon.match({
       time: new Date(fixedDate).toISOString(),
       level: 'error',
-      message: 'test'
+      message: 'Error: test, Stack: No stack available, Request body: {}'
     }))
   })
 
@@ -85,7 +85,7 @@ describe('Error handler', () => {
     sinon.assert.calledWith(consoleLogStub, sinon.match({
       time: new Date(fixedDate).toISOString(),
       level: 'error',
-      message: { message: 'Teste de erro 500', stack: '.src/stack' }
+      message: 'Error: {"message":"Teste de erro 500","stack":".src/stack"}, Stack: .src/stack, Request body: {}'
     }))
   })
 
