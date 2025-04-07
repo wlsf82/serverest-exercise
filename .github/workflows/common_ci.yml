@@ -29,7 +29,7 @@ jobs:
     - name: Project checkout - Continuous Delivery
       if: inputs.type_pipeline == 'continuous_delivery'
       uses: actions/checkout@v3
-    - run: docker-compose build test-contract
+    - run: docker compose build test-contract
     - name: Run contract test
       run: make test-contract
       env:
@@ -90,7 +90,7 @@ jobs:
       env:
         OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
         DD_API_KEY: op://CI-CD/Datadog/DD_API_KEY
-    - run: docker-compose build test-unit
+    - run: docker compose build test-unit
     - name: Run Unit Test
       run: make test-unit
       env: # Datadog "CI Tests" variables
@@ -119,7 +119,7 @@ jobs:
       env:
         OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
         DD_API_KEY: op://CI-CD/Datadog/DD_API_KEY
-    - run: docker-compose build test-integration
+    - run: docker compose build test-integration
     - name: Run Integration Test
       run: make test-integration
       env: # Datadog "CI Tests" variables
@@ -148,8 +148,8 @@ jobs:
       env:
         OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
         DD_API_KEY: op://CI-CD/Datadog/DD_API_KEY
-    - run: docker-compose build run-app-e2e
-    - run: docker-compose build test-e2e-localhost
+    - run: docker compose build run-app-e2e
+    - run: docker compose build test-e2e-localhost
     - name: Run E2E test in locally built docker image
       run: make test-e2e-localhost
       env: # Datadog "CI Tests" variables
@@ -217,7 +217,7 @@ jobs:
     steps:
     - name: Project checkout
       uses: actions/checkout@v3
-    - run: docker-compose build test-infra
+    - run: docker compose build test-infra
     - name: Run infra test
       run: make test-infra
 
