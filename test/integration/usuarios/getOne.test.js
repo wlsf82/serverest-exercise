@@ -19,9 +19,16 @@ describe(`${rotaUsuarios}/:id GET`, () => {
   })
 
   it('Param - Nenhum usuário encontrado', async () => {
-    const { body } = await request.get(`${rotaUsuarios}/123`).expect(400)
+    const { body } = await request.get(`${rotaUsuarios}/zl1aduaaaaaaafiF`).expect(400)
     chai.assert.deepEqual(body, {
       message: constants.USER_NOT_FOUND
+    })
+  })
+
+  it('Bad request - Deve retornar erro ao enviar Id que não consista de 16 caracteres alfanuméricos', async () => {
+    const { body } = await request.get(`${rotaUsuarios}/:_id`).expect(400)
+    chai.assert.deepEqual(body, {
+      id: 'id deve ter exatamente 16 caracteres alfanuméricos'
     })
   })
 })

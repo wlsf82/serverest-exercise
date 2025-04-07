@@ -28,9 +28,16 @@ describe(`${rotaCarrinhos}/:id GET`, () => {
   })
 
   it('Nenhum carrinho encontrado', async () => {
-    const { body } = await request.get(`${rotaCarrinhos}/123`).expect(400)
+    const { body } = await request.get(`${rotaCarrinhos}/zl1aduaaaaaaafiF`).expect(400)
     chai.assert.deepEqual(body, {
       message: 'Carrinho não encontrado'
+    })
+  })
+
+  it('Bad request - Deve retornar erro ao enviar Id que não consista de 16 caracteres alfanuméricos', async () => {
+    const { body } = await request.get(`${rotaCarrinhos}/:_id`).expect(400)
+    chai.assert.deepEqual(body, {
+      id: 'id deve ter exatamente 16 caracteres alfanuméricos'
     })
   })
 })

@@ -29,7 +29,7 @@ describe(rotaProdutos + ' PUT', () => {
   })
 
   it('Cadastro com sucesso', async () => {
-    const { body } = await request.put(rotaProdutos + '/a').send(utils.dadosProduto())
+    const { body } = await request.put(rotaProdutos + '/zl1aduaaabaaafiF').send(utils.dadosProduto())
       .set('authorization', authorizationAdministrador)
       .expect(201)
 
@@ -45,7 +45,7 @@ describe(rotaProdutos + ' PUT', () => {
       .set('authorization', authorizationAdministrador)
       .expect(201)
     const { body } = await request
-      .put(`${rotaProdutos}/a`)
+      .put(`${rotaProdutos}/zl1aduaacaaaafiF`)
       .send(produto)
       .set('authorization', authorizationAdministrador)
       .expect(400)

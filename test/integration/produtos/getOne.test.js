@@ -15,9 +15,16 @@ describe(`${rotaProdutos}/:id GET`, () => {
   })
 
   it('Nenhum produto encontrado', async () => {
-    const { body } = await request.get(`${rotaProdutos}/123`).expect(400)
+    const { body } = await request.get(`${rotaProdutos}/zl1aduaaaaaaafiF`).expect(400)
     chai.assert.deepEqual(body, {
       message: 'Produto não encontrado'
+    })
+  })
+
+  it('Bad request - Deve retornar erro ao enviar Id que não consista de 16 caracteres alfanuméricos', async () => {
+    const { body } = await request.get(`${rotaProdutos}/:_id`).expect(400)
+    chai.assert.deepEqual(body, {
+      id: 'id deve ter exatamente 16 caracteres alfanuméricos'
     })
   })
 })

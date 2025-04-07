@@ -14,7 +14,7 @@ exports.schemaGet = {
 
 exports.schemaGetOne = {
   params: Joi.object({
-    id: Joi.string().required()
+    id: Joi.string().regex(/^[a-zA-Z0-9]{16}$/).required()
   })
 }
 

@@ -18,7 +18,7 @@ describe(rotaProdutos + ' DELETE', () => {
       .del(`${rotaProdutos}/${_id}`)
       .set('authorization', authorizationAdministrador)
       .expect(200)
-    const { body: bodyGet } = await request.get(rotaProdutos).query({ _id })
+    const { body: bodyGet } = await request.get(rotaProdutos).query({ _id }).expect(200)
 
     chai.assert.deepEqual(bodyDel, { message: 'Registro excluído com sucesso' })
     chai.assert.deepEqual(bodyGet, { quantidade: 0, produtos: [] })
@@ -26,7 +26,7 @@ describe(rotaProdutos + ' DELETE', () => {
 
   it('Nenhum registro excluído', async () => {
     const { body } = await request
-      .del(`${rotaProdutos}/a`)
+      .del(`${rotaProdutos}/zl1aduaaaaaaafiF`)
       .set('authorization', authorizationAdministrador)
       .expect(200)
 
@@ -47,7 +47,7 @@ describe(rotaProdutos + ' DELETE', () => {
       message: 'Não é permitido excluir produto que faz parte de carrinho',
       idCarrinhos: [idCarrinho]
     })
-    const { body: bodyGet } = await request.get(rotaProdutos).query({ _id: idProduto })
+    const { body: bodyGet } = await request.get(rotaProdutos).query({ _id: idProduto }).expect(200)
     chai.assert.equal(bodyGet.quantidade, 1)
   })
 
@@ -72,6 +72,17 @@ describe(rotaProdutos + ' DELETE', () => {
 
     chai.assert.deepEqual(body, {
       message: 'Rota exclusiva para administradores'
+    })
+  })
+
+  it('Bad request - Deve retornar erro ao enviar Id que não consista de 16 caracteres alfanuméricos', async () => {
+    const { body } = await request
+      .del(`${rotaProdutos}/:_id`)
+      .set('authorization', authorizationAdministrador)
+      .expect(400)
+
+    chai.assert.deepEqual(body, {
+      id: 'id deve ter exatamente 16 caracteres alfanuméricos'
     })
   })
 })

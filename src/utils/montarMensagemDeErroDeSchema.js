@@ -1,6 +1,6 @@
 
 module.exports = error => {
-  const detalhesDoErro = error.details.body || error.details.query
+  const detalhesDoErro = error.details.body || error.details.query || error.details.params
   const mensagemDeErro = {}
 
   detalhesDoErro.forEach(erro => {
@@ -20,6 +20,7 @@ module.exports = error => {
       'string.base': `${propriedade} deve ser uma string`,
       'string.email': `${propriedade} deve ser um email válido`,
       'string.empty': `${propriedade} não pode ficar em branco`,
+      'string.pattern.base': `${propriedade} deve ter exatamente 16 caracteres alfanuméricos`,
       default: `${erro.message} - Erro ${erro.type} - Abra uma issue informando essa resposta. https://github.com/ServeRest/ServeRest/issues`
     }
     /* istanbul ignore next */
