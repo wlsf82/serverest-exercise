@@ -22,3 +22,8 @@ tmp/
 *.swp
 *.tgz
 gcloud-flags.yaml
+
+cypress.env.json
+cypress/downloads/
+cypress/screenshots/
+cypress/videos/

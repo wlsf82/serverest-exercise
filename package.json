@@ -44,7 +44,9 @@
     "lint": "standard",
     "lint:fix": "standard --fix",
     "lint:staged": "lint-staged",
-    "test:contract": "mocha test/contract --timeout 60000"
+    "test:contract": "mocha test/contract --timeout 60000",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -87,6 +89,7 @@
     "@stryker-mutator/core": "^5.3.0",
     "chai": "^4.3.4",
     "commitizen": "^4.2.3",
+    "cypress": "^14.5.1",
     "cz-conventional-changelog": "^3.3.0",
     "faker": "^5.5.3",
     "husky": "^6.0.0",
@@ -116,7 +119,10 @@
       "beforeEach",
       "describe",
       "it",
-      "request"
+      "request",
+      "cy",
+      "Cypress",
+      "expect"
     ]
   },
   "lint-staged": {
